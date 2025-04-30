@@ -14,7 +14,7 @@ indices:
       robots:
         select: head > meta[name="robots"]
         value: attribute(el, "content")
-      my-tags:
+      mytags:
         select: head > meta[name="cq-tags"]
         value: attribute(el, "content")
 
