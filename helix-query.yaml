@@ -1,22 +1,22 @@
 version: 1
 
 indices:
-  pages:
-    include:
-      - '/**'
-    exclude:
-      - '/**.json'
-    target: /query-index.json
-    properties:
-      lastModified:
-        select: none
-        value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
-      robots:
-        select: head > meta[name="robots"]
-        value: attribute(el, "content")
-      mytags:
-        select: head > meta[name="cq-tags"]
-        value: attribute(el, "content")
+  # pages:
+  #   include:
+  #     - '/**'
+  #   exclude:
+  #     - '/**.json'
+  #   target: /query-index.json
+  #   properties:
+  #     lastModified:
+  #       select: none
+  #       value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
+  #     robots:
+  #       select: head > meta[name="robots"]
+  #       value: attribute(el, "content")
+  #     mytags:
+  #       select: head > meta[name="cq-tags"]
+  #       value: attribute(el, "content")
 
   blogs:
     include:
