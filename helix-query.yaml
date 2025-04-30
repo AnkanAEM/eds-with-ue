@@ -20,7 +20,7 @@ indices:
 
   blogs:
     include:
-      - '/blogs/**'
+      - '/**'
     exclude:
       - '/**.json'
     target: /blog-index.json
