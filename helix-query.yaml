@@ -14,3 +14,20 @@ indices:
       robots:
         select: head > meta[name="robots"]
         value: attribute(el, "content")
+
+  blogs:
+    include:
+      - '/blogs/**'
+    exclude:
+      - '/**.json'
+    target: /blog-index.json
+    properties:
+      lastModified:
+        select: none
+        value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
+      robots:
+        select: head > meta[name="robots"]
+        value: attribute(el, "content")
+      tags:
+        select: head > meta[name="cq-tags"]
+        values: attribute(el, "content")
