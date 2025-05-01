@@ -1,13 +1,12 @@
 version: 1
 
 indices:
-
   blogs:
     include:
-      - '/**'
+      - '/blogs/**'
     exclude:
       - '/**.json'
-    target: /blog-index.json
+    target: /custom-index.json
     properties:
       lastModified:
         select: none
