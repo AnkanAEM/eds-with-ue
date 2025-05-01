@@ -6,7 +6,7 @@ indices:
       - '/blogs/**'
     exclude:
       - '/**.json'
-    target: /custom-index.json
+    target: /blog-index.json
     properties:
       lastModified:
         select: none
