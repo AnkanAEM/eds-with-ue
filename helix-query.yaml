@@ -18,7 +18,6 @@ indices:
       customTags:
         select: head > meta[name="cq-tags"]
         value: attribute(el, "content")
-      image:
   pages:
     include:
       - '/**'
