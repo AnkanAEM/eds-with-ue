@@ -18,7 +18,7 @@ indices:
       customTags:
         select: head > meta[name="cq-tags"]
         value: attribute(el, "content")
-      image:
+      tumbnail:
         select: head > meta[name="og:image"]
         value: attribute(el, "content")
   pages:
