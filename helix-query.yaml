@@ -19,7 +19,7 @@ indices:
         select: head > meta[name="cq-tags"]
         value: attribute(el, "content")
       thumbnail:
-        select: head > meta[name="og:image"]
+        select: head > meta[property="og:image"]
         value: attribute(el, "content")
   pages:
     include:
