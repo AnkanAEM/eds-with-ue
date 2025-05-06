@@ -223,7 +223,7 @@
     ]
   },
   {
-    "id": "customSearch",
+    "id": "custom-search",
     "fields": [
        {
          "component": "text",

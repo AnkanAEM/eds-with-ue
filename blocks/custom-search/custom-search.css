@@ -1,8 +1,8 @@
-.customsearch .search-heading{
+.custom-search .search-heading{
     text-align:  center;
 }
 
-.customsearch .search-input-wrapper{
+.custom-search .search-input-wrapper{
     display: flex;
     padding: 5px 40px;
 }
