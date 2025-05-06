@@ -40,10 +40,10 @@ export default function decorate(block) {
         return [];
       }
     }
-    let allIndexes = await fetchIndexes(queryUrl);
+    const allIndexes = await fetchIndexes(queryUrl);
     function createFacets(results) {
       facetProperties.forEach((property) => {
-        let facetValues = {};
+        const facetValues = {};
         results.forEach((currIndex) => {
           if (Object.prototype.hasOwnProperty.call(currIndex, property)) {
             if (currIndex[property] !== '') {
@@ -107,8 +107,8 @@ export default function decorate(block) {
     }
     // createFacets(allIndexes);
     function filterResults(searchTerm, selectedFacets, resultsDiv) {
-      let finalResults = new Set();
-      let searchTermsArray = searchTerm.split(' ');
+      const finalResults = new Set();
+      const searchTermsArray = searchTerm.split(' ');
       console.log({ searchTermsArray });
       allIndexes.forEach((item) => {
         searchTermsArray.forEach((term) => {
@@ -127,7 +127,7 @@ export default function decorate(block) {
       console.log(finalResults);
       resultsDiv.innerHTML = '';
       createFacets(finalResults);
-      let facetsMarkup = buildFacetsMarkup(facetsWithCount);
+      const facetsMarkup = buildFacetsMarkup(facetsWithCount);
 
       // Create wrapper for layout
       const layoutWrapper = document.createElement('div');
