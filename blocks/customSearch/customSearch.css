@@ -1,0 +1,24 @@
+.customsearch .search-heading{
+    text-align:  center;
+}
+
+
+.customsearch .search-input-wrapper{
+    display: flex;
+    padding: 5px 40px;
+}
+.search-input{
+    width: 85%;
+}
+.search-button{
+    margin-left: auto;
+    
+}
+.search-result img {
+    width: 50%;
+}
+
+.facet-item {
+    display: block;
+    margin-bottom: 0.5em;
+}
