@@ -1,6 +1,6 @@
 export default function decorate(block) {
-  let headingText, queryUrl;
-  const facetProperties = ['customTags'];
+  let headingText;
+  let queryUrl;  const facetProperties = ['customTags'];
   const facetsWithCount = {};
   [...block.children].forEach((child, n) => {
     switch (n) {
@@ -15,14 +15,8 @@ export default function decorate(block) {
     }
   });
 
-  initSearch();
-
   async function initSearch() {
-    queryUrl = window.location.protocol + '//' + window.location.host + queryUrl;
-    let allIndexes = await fetchIndexes(queryUrl);
-    // createFacets(allIndexes);
-    buildSearch(headingText, block);
-
+    queryUrl = `${window.location.protocol}//${window.location.host}${queryUrl}`;
     // Fetch all the child pages
     async function fetchIndexes(url) {
       try {
@@ -45,63 +39,74 @@ export default function decorate(block) {
         return [];
       }
     }
-
-    function buildSearch(headingText, block) {
-      const container = document.createElement('div');
-      container.className = 'search-container';
-
-      // Create heading element
-      const heading = document.createElement('h2');
-      heading.className = 'search-heading';
-      heading.textContent = headingText || 'Search';
-
-      // Create search input wrapper
-      const searchInputWrapper = document.createElement('div');
-      searchInputWrapper.className = 'search-input-wrapper';
-
-      // Create search input
-      const searchInput = document.createElement('input');
-      searchInput.type = 'search';
-      searchInput.className = 'search-input';
-      searchInput.placeholder = 'Search...';
-      searchInput.setAttribute('aria-label', 'Search');
-
-      // Create search button
-      const searchButton = document.createElement('button');
-      searchButton.className = 'search-button';
-      searchButton.textContent = 'Search';
-
-      searchInputWrapper.appendChild(searchInput);
-      searchInputWrapper.appendChild(searchButton);
-
-      // Create results list
-      const resultsDiv = document.createElement('ul');
-      resultsDiv.className = 'search-results';
-
-      // Append elements to container
-      container.appendChild(heading);
-      container.appendChild(searchInputWrapper);
-      container.appendChild(resultsDiv);
-
-      block.textContent = '';
-      block.append(container);
-
-      // Handle search
-      const handleSearch = () => {
-        const searchTerm = searchInput.value.trim().toLowerCase();
-
-        if (searchTerm.length >= 1) {
-          filterResults(searchTerm, null, resultsDiv); // Your filtering logic
-        } else {
-          resultsDiv.innerHTML = '';
-        }
-      };
-
-      // Add event listeners
-      // searchInput.addEventListener('input', handleSearch);
-      searchButton.addEventListener('click', handleSearch);
+    let allIndexes = await fetchIndexes(queryUrl);
+    function createFacets(results) {
+      facetProperties.forEach((property) => {
+        let facetValues = {};
+        results.forEach((currIndex) => {
+          if (Object.prototype.hasOwnProperty.call(currIndex, property)) {
+            if (currIndex[property] !== '') {
+              if (Object.prototype.hasOwnProperty.call(facetValues, currIndex[property])) {
+                facetValues[currIndex[property]] += 1;
+              } else {
+                facetValues[currIndex[property]] = 1;
+              }
+            }
+          }
+        });
+        facetsWithCount[property] = facetValues;
+      });
+      console.log(facetsWithCount);
     }
+    function buildFacetsMarkup(facetData) {
+      let emptyFlag = true;
+      const facetContainer = document.createElement('div');
+      facetContainer.className = 'facet-container';
+      Object.entries(facetData).forEach(([facetCategory, facets]) => {
+        const fieldset = document.createElement('fieldset');
+        fieldset.className = 'facet-group';
 
+        const legend = document.createElement('legend');
+        legend.textContent = facetCategory;
+        fieldset.appendChild(legend);
+
+        Object.entries(facets).forEach(([value, count]) => {
+          const label = document.createElement('label');
+          label.className = 'facet-item';
+
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.name = facetCategory;
+          checkbox.value = value;
+
+          // Event listener for now
+          checkbox.addEventListener('change', (e) => {
+            const isChecked = e.target.checked;
+            console.log(`[Facet Changed] ${facetCategory} -> ${value} = ${isChecked}`);
+          });
+
+          const text = document.createElement('span');
+          text.textContent = ` ${value} (${count})`;
+
+          label.appendChild(checkbox);
+          label.appendChild(text);
+          fieldset.appendChild(label);
+        });
+
+        Array.from(fieldset.children).forEach((el) => {
+          if (el.tagName === 'LABEL') {
+            emptyFlag = false;
+          }
+        });
+        if (!emptyFlag) {
+          facetContainer.appendChild(fieldset);
+        }
+        
+      });
+
+      return facetContainer;
+    }
+    // createFacets(allIndexes);
     function filterResults(searchTerm, selectedFacets, resultsDiv) {
       let finalResults = new Set();
       let searchTermsArray = searchTerm.split(' ');
@@ -109,12 +114,12 @@ export default function decorate(block) {
       allIndexes.forEach((item) => {
         searchTermsArray.forEach((term) => {
           if (
-            (item.description != null &&
-              item.description !== '' &&
-              item.description.toLowerCase().includes(term)) ||
-            (item.title != null &&
-              item.title !== '' &&
-              item.title.toLowerCase().includes(term))
+            (item.description != null
+              && item.description !== ''
+              && item.description.toLowerCase().includes(term))
+              || (item.title != null
+              && item.title !== ''
+              && item.title.toLowerCase().includes(term))
           ) {
             finalResults.add(item);
           }
@@ -175,71 +180,64 @@ export default function decorate(block) {
       resultsDiv.innerHTML = ''; // Clear any existing content
       resultsDiv.appendChild(layoutWrapper);
     }
+    function buildSearch(headingText, block) {
+      const container = document.createElement('div');
+      container.className = 'search-container';
 
-    function createFacets(results) {
-      facetProperties.forEach((property) => {
-        let facetValues = {};
-        results.forEach((currIndex) => {
-          if (currIndex.hasOwnProperty(property)) {
-            if (currIndex[property] !== '') {
-              if (facetValues.hasOwnProperty(currIndex[property])) {
-                facetValues[currIndex[property]] = facetValues[currIndex[property]] + 1;
-              } else {
-                facetValues[currIndex[property]] = 1;
-              }
-            }
-          }
-        });
-        facetsWithCount[property] = facetValues;
-      });
-      console.log(facetsWithCount);
+      // Create heading element
+      const heading = document.createElement('h2');
+      heading.className = 'search-heading';
+      heading.textContent = headingText || 'Search';
+
+      // Create search input wrapper
+      const searchInputWrapper = document.createElement('div');
+      searchInputWrapper.className = 'search-input-wrapper';
+
+      // Create search input
+      const searchInput = document.createElement('input');
+      searchInput.type = 'search';
+      searchInput.className = 'search-input';
+      searchInput.placeholder = 'Search...';
+      searchInput.setAttribute('aria-label', 'Search');
+
+      // Create search button
+      const searchButton = document.createElement('button');
+      searchButton.className = 'search-button';
+      searchButton.textContent = 'Search';
+
+      searchInputWrapper.appendChild(searchInput);
+      searchInputWrapper.appendChild(searchButton);
+
+      // Create results list
+      const resultsDiv = document.createElement('ul');
+      resultsDiv.className = 'search-results';
+
+      // Append elements to container
+      container.appendChild(heading);
+      container.appendChild(searchInputWrapper);
+      container.appendChild(resultsDiv);
+
+      block.textContent = '';
+      block.append(container);
+
+      // Handle search
+      const handleSearch = () => {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+
+        if (searchTerm.length >= 1) {
+          filterResults(searchTerm, null, resultsDiv); // Your filtering logic
+        } else {
+          resultsDiv.innerHTML = '';
+        }
+      };
+
+      // Add event listeners
+      // searchInput.addEventListener('input', handleSearch);
+      searchButton.addEventListener('click', handleSearch);
     }
-
-    function buildFacetsMarkup(facetData) {
-      let emptyFlag = true;
-      const facetContainer = document.createElement('div');
-      facetContainer.className = 'facet-container';
-      debugger;
-      Object.entries(facetData).forEach(([facetCategory, facets]) => {
-        const fieldset = document.createElement('fieldset');
-        fieldset.className = 'facet-group';
-
-        const legend = document.createElement('legend');
-        legend.textContent = facetCategory;
-        fieldset.appendChild(legend);
-
-        Object.entries(facets).forEach(([value, count]) => {
-          const label = document.createElement('label');
-          label.className = 'facet-item';
-
-          const checkbox = document.createElement('input');
-          checkbox.type = 'checkbox';
-          checkbox.name = facetCategory;
-          checkbox.value = value;
-
-          // Event listener for now
-          checkbox.addEventListener('change', (e) => {
-            const isChecked = e.target.checked;
-            console.log(`[Facet Changed] ${facetCategory} -> ${value} = ${isChecked}`);
-          });
-
-          const text = document.createElement('span');
-          text.textContent = ` ${value} (${count})`;
-
-          label.appendChild(checkbox);
-          label.appendChild(text);
-          fieldset.appendChild(label);
-        });
-
-        Array.from(fieldset.children).forEach((el) => {
-          if (el.tagName === 'LABEL') {
-            emptyFlag = false;
-          }
-        });
-        !emptyFlag ? facetContainer.appendChild(fieldset) : '';
-      });
-
-      return facetContainer;
-    }
+    buildSearch(headingText, block);
   }
+
+  initSearch();
+  
 }
