@@ -1,6 +1,7 @@
 export default function decorate(block) {
   let headingText;
-  let queryUrl;  const facetProperties = ['customTags'];
+  let queryUrl;
+  const facetProperties = ['customTags'];
   const facetsWithCount = {};
   [...block.children].forEach((child, n) => {
     switch (n) {
@@ -101,9 +102,7 @@ export default function decorate(block) {
         if (!emptyFlag) {
           facetContainer.appendChild(fieldset);
         }
-        
       });
-
       return facetContainer;
     }
     // createFacets(allIndexes);
@@ -237,7 +236,5 @@ export default function decorate(block) {
     }
     buildSearch(headingText, block);
   }
-
   initSearch();
-  
 }
