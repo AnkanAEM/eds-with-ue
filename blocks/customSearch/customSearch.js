@@ -179,14 +179,14 @@ export default function decorate(block) {
       resultsDiv.innerHTML = ''; // Clear any existing content
       resultsDiv.appendChild(layoutWrapper);
     }
-    function buildSearch(headingText, block) {
+    function buildSearch(headingValue, searchBlock) {
       const container = document.createElement('div');
       container.className = 'search-container';
 
       // Create heading element
       const heading = document.createElement('h2');
       heading.className = 'search-heading';
-      heading.textContent = headingText || 'Search';
+      heading.textContent = headingValue || 'Search';
 
       // Create search input wrapper
       const searchInputWrapper = document.createElement('div');
@@ -216,8 +216,8 @@ export default function decorate(block) {
       container.appendChild(searchInputWrapper);
       container.appendChild(resultsDiv);
 
-      block.textContent = '';
-      block.append(container);
+      searchBlock.textContent = '';
+      searchBlock.append(container);
 
       // Handle search
       const handleSearch = () => {
