@@ -1,8 +1,12 @@
+import updateFilters, { updateUrlQuery, getUrlParameter } from './helper.js';
+
 export default function decorate(block) {
   let headingText;
+  let resultsDivGlobal;
   let queryUrl;
   const facetProperties = ['customTags'];
   const facetsWithCount = {};
+  const filters = {};
   [...block.children].forEach((child, n) => {
     switch (n) {
       case 0:
@@ -59,6 +63,21 @@ export default function decorate(block) {
       });
       console.log(facetsWithCount);
     }
+    const handleSearch = (searchInput, resultsDiv) => {
+      let searchTerm;
+      if (searchInput === null || searchInput === undefined) {
+        searchTerm = getUrlParameter('searchTerm');
+      } else {
+        searchTerm = searchInput.trim().toLowerCase();
+      }
+      updateUrlQuery('searchTerm', searchTerm);
+      // let filters = getUrlParameter('filters');
+      if (searchTerm.length >= 1) {
+        filterResults(searchTerm, filters, resultsDiv);
+      } else {
+        resultsDiv.innerHTML = '';
+      }
+    };
     function buildFacetsMarkup(facetData) {
       let emptyFlag = true;
       const facetContainer = document.createElement('div');
@@ -74,16 +93,22 @@ export default function decorate(block) {
         Object.entries(facets).forEach(([value, count]) => {
           const label = document.createElement('label');
           label.className = 'facet-item';
-
           const checkbox = document.createElement('input');
           checkbox.type = 'checkbox';
           checkbox.name = facetCategory;
           checkbox.value = value;
+          if (filters[facetCategory]?.split(',').includes(value)) {
+            checkbox.checked = true;
+          } else {
+            checkbox.checked = false;
+          }
 
-          // Event listener for now
           checkbox.addEventListener('change', (e) => {
             const isChecked = e.target.checked;
-            console.log(`[Facet Changed] ${facetCategory} -> ${value} = ${isChecked}`);
+            updateFilters(filters, facetCategory, value, isChecked);
+            updateUrlQuery('filters', JSON.stringify(filters));
+            const inputKey = getUrlParameter('searchTerm');
+            handleSearch(inputKey, resultsDivGlobal);
           });
 
           const text = document.createElement('span');
@@ -105,21 +130,36 @@ export default function decorate(block) {
       });
       return facetContainer;
     }
-    // createFacets(allIndexes);
     function filterResults(searchTerm, selectedFacets, resultsDiv) {
+      let emptyFacetFlag = true;
       const finalResults = new Set();
       const searchTermsArray = searchTerm.split(' ');
       console.log({ searchTermsArray });
+      emptyFacetFlag = !Object.values(selectedFacets).some(Boolean);
       allIndexes.forEach((item) => {
         searchTermsArray.forEach((term) => {
-          if (
-            (item.description != null
+          if (!emptyFacetFlag) {
+            Object.entries(selectedFacets).forEach(([facetCategory, facetValues]) => {
+              if (facetValues !== null && facetValues !== undefined && facetValues !== '') {
+                const selectedValues = facetValues.split(',');
+                selectedValues.forEach((value) => {
+                  if (item[facetCategory].includes(value) && ((item.description != null
+                    && item.description !== ''
+                    && item.description.toLowerCase().includes(term))
+                    || (item.title != null
+                    && item.title !== ''
+                    && item.title.toLowerCase().includes(term)))) {
+                    finalResults.add(item);
+                  }
+                });
+              }
+            });
+          } else if ((item.description != null
               && item.description !== ''
               && item.description.toLowerCase().includes(term))
               || (item.title != null
-              && item.title !== ''
-              && item.title.toLowerCase().includes(term))
-          ) {
+                && item.title !== ''
+                && item.title.toLowerCase().includes(term))) {
             finalResults.add(item);
           }
         });
@@ -179,6 +219,9 @@ export default function decorate(block) {
       resultsDiv.innerHTML = ''; // Clear any existing content
       resultsDiv.appendChild(layoutWrapper);
     }
+
+    // Handle search
+
     function buildSearch(headingValue, searchBlock) {
       const container = document.createElement('div');
       container.className = 'search-container';
@@ -208,31 +251,20 @@ export default function decorate(block) {
       searchInputWrapper.appendChild(searchButton);
 
       // Create results list
-      const resultsDiv = document.createElement('ul');
-      resultsDiv.className = 'search-results';
+      resultsDivGlobal = document.createElement('ul');
+      resultsDivGlobal.className = 'search-results';
 
       // Append elements to container
       container.appendChild(heading);
       container.appendChild(searchInputWrapper);
-      container.appendChild(resultsDiv);
+      container.appendChild(resultsDivGlobal);
 
       searchBlock.textContent = '';
       searchBlock.append(container);
 
-      // Handle search
-      const handleSearch = () => {
-        const searchTerm = searchInput.value.trim().toLowerCase();
-
-        if (searchTerm.length >= 1) {
-          filterResults(searchTerm, null, resultsDiv); // Your filtering logic
-        } else {
-          resultsDiv.innerHTML = '';
-        }
-      };
-
       // Add event listeners
-      // searchInput.addEventListener('input', handleSearch);
-      searchButton.addEventListener('click', handleSearch);
+      searchButton.addEventListener('click', () => { handleSearch(searchInput.value, resultsDivGlobal); });
+      searchInput.addEventListener('input', () => { handleSearch(searchInput.value, resultsDivGlobal); });
     }
     buildSearch(headingText, block);
   }
