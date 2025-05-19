@@ -2,7 +2,10 @@
   "mappings": [
     "/content/eds-with-ue---test/:/",
     "/content/eds-with-ue---test/configuration:/.helix/config.json",
-    "/content/eds-with-ue---test/metadata:/metadata.json"
+    "/content/eds-with-ue---test/metadata:/metadata.json",
+    "/content/eds-with-ue---test/query-index.json:/query-index.json",
+    "/content/eds-with-ue---test/all-index.json:/all-index.json",
+    "/content/eds-with-ue---test/blog-index.json:/blog-index.json"
   ],
   "includes": [
     "/content/eds-with-ue---test/"
