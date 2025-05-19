@@ -14,5 +14,7 @@
   ],
   "includes": [
     "/content/eds-with-ue---test/"
+    "/content/eds-with-ue---test/en/"
+
   ]
 }
