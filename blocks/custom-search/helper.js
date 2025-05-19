@@ -2,7 +2,8 @@ export function updateUrlQuery(key, value) {
   if ('URLSearchParams' in window) {
     const url = new URL(window.location);
     url.searchParams.set(key, value);
-    window.history.pushState(null, '', url);  }
+    window.history.pushState(null, '', url);
+  }
 }
 
 export function getUrlParameter(key) {
