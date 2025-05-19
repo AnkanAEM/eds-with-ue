@@ -13,7 +13,7 @@
     "/content/eds-with-ue---test/en/blog-index.json:/english/blog-index.json"
   ],
   "includes": [
-    "/content/eds-with-ue---test/"
+    "/content/eds-with-ue---test/",
     "/content/eds-with-ue---test/en/"
 
   ]
