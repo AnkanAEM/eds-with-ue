@@ -5,7 +5,12 @@
     "/content/eds-with-ue---test/metadata:/metadata.json",
     "/content/eds-with-ue---test/query-index.json:/query-index.json",
     "/content/eds-with-ue---test/all-index.json:/all-index.json",
-    "/content/eds-with-ue---test/blog-index.json:/blog-index.json"
+    "/content/eds-with-ue---test/blog-index.json:/blog-index.json",
+
+    "/content/eds-with-ue---test/en:/english",
+    "/content/eds-with-ue---test/en/query-index.json:/english/query-index.json",
+    "/content/eds-with-ue---test/en/all-index.json:/english/all-index.json",
+    "/content/eds-with-ue---test/en/blog-index.json:/english/blog-index.json"
   ],
   "includes": [
     "/content/eds-with-ue---test/"
