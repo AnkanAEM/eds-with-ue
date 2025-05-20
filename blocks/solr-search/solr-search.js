@@ -1,5 +1,3 @@
-import updateFilters, { updateUrlQuery, getUrlParameter } from './helper.js';
-
 export default function decorate(block) {
   let headingText;
   let queryUrl;
@@ -17,5 +15,4 @@ export default function decorate(block) {
         break;
     }
   });
-  
 }
