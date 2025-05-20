@@ -240,5 +240,24 @@
          "value": ""
        }
      ]
+  },
+  {
+    "id": "solr-search",
+    "fields": [
+       {
+         "component": "text",
+         "name": "heading",
+         "value": "",
+         "label": "heading",
+         "valueType": "string"
+       },
+       {
+         "component": "text",
+         "valueType": "string",
+         "name": "searchUrl",
+         "label": "search URL",
+         "value": ""
+       }
+     ]
   }
 ]
