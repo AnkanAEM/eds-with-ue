@@ -37,12 +37,5 @@
             ]
         }
     ],
-    "filters": [
-        {
-            "id": "section",
-            "components": [
-                "solr-search"
-            ]
-        }
-    ]
+    "filters": []
 }

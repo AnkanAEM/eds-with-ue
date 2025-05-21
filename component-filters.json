@@ -38,11 +38,5 @@
       "button",
       "title"
     ]
-  },
-  {
-    "id": "section",
-    "components": [
-      "solr-search"
-    ]
   }
 ]
