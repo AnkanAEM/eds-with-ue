@@ -50,8 +50,7 @@
       "cards",
       "columns",
       "fragment",
-      "custom-search",
-      "solr-search"
+      "custom-search"
     ]
   }
 ]

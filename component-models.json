@@ -223,22 +223,22 @@
     ]
   },
   {
-    "id": "solr-search",
+    "id": "custom-search",
     "fields": [
-      {
-        "component": "text",
-        "name": "heading",
-        "value": "",
-        "label": "heading",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "searchUrl",
-        "label": "search URL",
-        "value": ""
-      }
-    ]
+       {
+         "component": "text",
+         "name": "heading",
+         "value": "",
+         "label": "heading",
+         "valueType": "string"
+       },
+       {
+         "component": "text",
+         "valueType": "string",
+         "name": "queryUrl",
+         "label": "Query URL",
+         "value": ""
+       }
+     ]
   }
 ]
