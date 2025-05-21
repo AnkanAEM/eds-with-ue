@@ -16,7 +16,7 @@
       "cards",
       "columns",
       "fragment",
-       "custom-search",
+      "custom-search",
       "solr-search"
     ]
   },
