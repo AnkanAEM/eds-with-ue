@@ -57,15 +57,19 @@
   .facet-group ul {
     padding-left: 20px;
   }
+
   .facet-label{
     display: block
   }
+
   .facet-option{
     display: flex;
+
     input{
         order: 1;
     }
   }
+
   .pagination {
     display: flex;
     justify-content: center;
@@ -73,6 +77,7 @@
     margin-top: 20px;
     align-items: center;
   }
+
   .result-count{
     margin-top: 0;
   }
