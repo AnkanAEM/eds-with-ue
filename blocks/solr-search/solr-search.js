@@ -2,7 +2,7 @@ export default function decorate(block) {
   let headingText = 'Search';
   let queryUrl = '';
   let facetFields = ['customTags_str', 'path'];
-  const dynamicFields = ['title', 'customTags', 'thumbnail', 'lastModified', 'path', 'description'];
+  let dynamicFields = ['title', 'customTags', 'thumbnail', 'lastModified', 'path', 'description'];
   let currentPage = 1;
   let resultsPerPage = 10;
   let totalResults = 0;
@@ -23,12 +23,18 @@ export default function decorate(block) {
         break;
       }
       case 2: {
-        facetFields = child.textContent.trim().split(',').map((f) => f.trim());
+        if (child.textContent.trim().length > 0) {
+          const facetFieldsAuthored = child.textContent.trim().split(',').map((f) => f.trim());
+          facetFields = facetFieldsAuthored;
+          facetFields.forEach((field) => selectedFilters.set(field, new Set()));
+        }
         break;
       }
       case 3: {
-        const dynamicFieldList = child.textContent.trim().split(',').map((f) => f.trim());
-        dynamicFields.push(...dynamicFieldList);
+        if (child.textContent.trim().length > 0) {
+          const dynamicFieldList = child.textContent.trim().split(',').map((f) => f.trim());
+          dynamicFields = dynamicFieldList;
+        }
         break;
       }
       case 4: {
@@ -241,6 +247,7 @@ export default function decorate(block) {
       filter: filters,
       limit: resultsPerPage,
       offset,
+      fields: dynamicFields,
       facet: Object.fromEntries(
         facetFields.map((field) => [
           field,
