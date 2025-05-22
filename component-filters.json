@@ -15,9 +15,7 @@
       "hero",
       "cards",
       "columns",
-      "fragment",
-      "custom-search",
-      "solr-search"
+      "fragment"
     ]
   },
   {

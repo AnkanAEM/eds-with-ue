@@ -238,6 +238,27 @@
         "name": "searchUrl",
         "label": "search URL",
         "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "facetFields",
+        "label": "Facet Fields (comma separated)",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "includedFields",
+        "label": "Fields to be included in the Result (comma separated)",
+        "value": ""
+      },
+      {
+        "component": "number",
+        "valueType": "number",
+        "name": "resultsPerPage",
+        "label": "Results per page",
+        "value": 10
       }
     ]
   }
