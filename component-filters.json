@@ -15,9 +15,7 @@
       "hero",
       "cards",
       "columns",
-      "fragment",
-      "solr-search",
-      "video-yt"
+      "fragment"
     ]
   },
   {
@@ -39,6 +37,18 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "section",
+    "components": [
+      "solr-search"
+    ]
+  },
+  {
+    "id": "section",
+    "components": [
+      "video-yt"
     ]
   }
 ]
