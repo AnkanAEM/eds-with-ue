@@ -2,7 +2,8 @@
   {
     "id": "main",
     "components": [
-      "section"
+      "section",
+      "background-container"
     ]
   },
   {
@@ -17,9 +18,7 @@
       "columns",
       "fragment",
       "solr-search",
-      "video-youtube",
-      "background-container"
-    ]
+      "video-youtube"    ]
   },
   {
     "id": "cards",
