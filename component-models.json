@@ -261,5 +261,24 @@
         "value": 10
       }
     ]
+  },
+  {
+    "id": "video-yt",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "thumbnail",
+        "label": "Thumbnail",
+        "description": "Image to display before the video is played",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "ytLink",
+        "label": "Youtue Link",
+        "valueType": "string"
+      }
+    ]
   }
 ]
