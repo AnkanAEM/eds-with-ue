@@ -106,8 +106,60 @@ const loadVideoEmbed = (block, link, autoplay, background) => {
   }
 };
 
+function preReserveSideHeights(block, attempt = 0) {
+  const MAX_ATTEMPTS = 100;
+  const RETRY_INTERVAL = 100; // ms
+
+  const layout = block.closest('.video-layout');
+
+  if (!layout.querySelector('.video-main .video-youtube iframe')) {
+    if (attempt < MAX_ATTEMPTS) {
+      setTimeout(() => {
+        preReserveSideHeights(block, attempt + 1);
+      }, RETRY_INTERVAL);
+    } else {
+      console.warn('video-layout not found after 20 attempts');
+    }
+    return;
+  }
+
+  const main = layout.querySelector('.video-main');
+  const width = main.offsetWidth;
+  const estimatedHeight = width * (9 / 16); // 16:9
+  const sideHeight = estimatedHeight / 2;
+
+  layout.querySelectorAll('.video-side').forEach((side) => {
+    side.style.height = `${sideHeight}px`;
+  });
+}
+
+
 export default async function decorate(block) {
   console.log('decorate video-yt block', block);
+
+  // Wrap the block in the new layout structure
+  const layoutWrapper = document.createElement('div');
+  layoutWrapper.className = 'video-layout';
+
+  const sideLeft = document.createElement('div');
+  sideLeft.className = 'video-side left';
+  sideLeft.attributeStyleMap.set('height', '0');
+
+  const mainWrapper = document.createElement('div');
+  mainWrapper.className = 'video-main';
+
+  const sideRight = document.createElement('div');
+  sideRight.className = 'video-side right';
+  sideRight.attributeStyleMap.set('height', '0');
+
+
+  block.parentElement.insertBefore(layoutWrapper, block);
+  layoutWrapper.appendChild(sideLeft);
+  layoutWrapper.appendChild(mainWrapper);
+  layoutWrapper.appendChild(sideRight);
+  mainWrapper.appendChild(block);
+  preReserveSideHeights(block);
+
   const placeholder = block.querySelector('picture');
   const link = block.querySelector('a').href;
   block.textContent = '';
