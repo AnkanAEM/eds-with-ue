@@ -299,7 +299,7 @@
     ]
   },
   {
-    "id": "video-youtube",
+    "id": "background-container",
     "fields": [
       {
         "component": "multiselect",
