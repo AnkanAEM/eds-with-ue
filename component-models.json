@@ -274,7 +274,7 @@
         "multi": false
       },
       {
-        "component": "richtext",
+        "component": "text",
         "name": "ytLink",
         "label": "Youtue Link",
         "valueType": "string"
