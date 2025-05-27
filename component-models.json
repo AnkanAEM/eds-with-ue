@@ -263,7 +263,7 @@
     ]
   },
   {
-    "id": "video-yt",
+    "id": "video-youtube",
     "fields": [
       {
         "component": "reference",
