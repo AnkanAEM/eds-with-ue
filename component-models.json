@@ -303,7 +303,7 @@
     "fields": [
       {
         "component": "multiselect",
-        "name": "classes",
+        "name": "Style",
         "value": "",
         "label": "Container options",
         "valueType": "string",
