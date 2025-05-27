@@ -2,8 +2,7 @@
   {
     "id": "main",
     "components": [
-      "section",
-      "background-container"
+      "section"
     ]
   },
   {
@@ -39,21 +38,6 @@
       "image",
       "button",
       "title"
-    ]
-  },
-  {
-    "id": "background-container",
-    "components": [
-      "text",
-      "image",
-      "button",
-      "title",
-      "hero",
-      "cards",
-      "columns",
-      "fragment",
-      "solr-search",
-      "video-youtube"
     ]
   }
 ]
