@@ -42,7 +42,6 @@
       "title"
     ]
   },
-  
   {
     "id": "background-container",
     "components": [
@@ -55,6 +54,7 @@
       "columns",
       "fragment",
       "solr-search",
-      "video-youtube"    ]
+      "video-youtube"
+    ]
   }
 ]
