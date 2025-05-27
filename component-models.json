@@ -278,6 +278,23 @@
         "name": "ytLink",
         "label": "Youtue Link",
         "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "",
+        "label": "Teaser options",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Autoplay",
+            "value": "autoplay"
+          }
+        ]
       }
     ]
   }
