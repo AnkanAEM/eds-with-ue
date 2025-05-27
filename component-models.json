@@ -263,7 +263,7 @@
     ]
   },
   {
-    "id": "video-yt",
+    "id": "video-youtube",
     "fields": [
       {
         "component": "reference",
@@ -274,7 +274,7 @@
         "multi": false
       },
       {
-        "component": "richtext",
+        "component": "text",
         "name": "ytLink",
         "label": "Youtue Link",
         "valueType": "string"
