@@ -280,10 +280,10 @@
         "valueType": "string"
       },
       {
-        "component": "select",
+        "component": "multiselect",
         "name": "classes",
         "value": "",
-        "label": "Autoplay options",
+        "label": "Style / feature options",
         "valueType": "string",
         "options": [
           {
@@ -293,16 +293,7 @@
           {
             "name": "Autoplay",
             "value": "autoplay"
-          }
-        ]
-      },
-      {
-        "component": "select",
-        "name": "classes",
-        "value": "",
-        "label": "Color options",
-        "valueType": "string",
-        "options": [
+          },
           {
             "name": "Red",
             "value": "bg-red"
