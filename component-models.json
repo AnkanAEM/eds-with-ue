@@ -297,5 +297,46 @@
         ]
       }
     ]
+  },
+  {
+    "id": "video-youtube",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "value": "",
+        "label": "Container options",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default 50%",
+            "value": "fifty-percent"
+          },
+          {
+            "name": "100% Height",
+            "value": "hundred-percent"
+          },
+          {
+            "name": "color-orange",
+            "value": "color-orange"
+          },
+          {
+            "name": "color-blue",
+            "value": "color-blue"
+          },
+          {
+            "name": "color-green",
+            "value": "color-green"
+          },
+          {
+            "name": "color-red",
+            "value": "color-red"
+          },
+          {"name": "color-white",
+            "value": "color-white"
+          }         
+        ]
+      }
+    ]
   }
 ]
