@@ -133,7 +133,6 @@ function preReserveSideHeights(block, attempt = 0) {
   });
 }
 
-
 export default async function decorate(block) {
   console.log('decorate video-yt block', block);
 
@@ -151,7 +150,6 @@ export default async function decorate(block) {
   const sideRight = document.createElement('div');
   sideRight.className = 'video-side right';
   sideRight.attributeStyleMap.set('height', '0');
-
 
   block.parentElement.insertBefore(layoutWrapper, block);
   layoutWrapper.appendChild(sideLeft);

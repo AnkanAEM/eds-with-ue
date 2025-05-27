@@ -1,9 +1,11 @@
 .bg-white {
   background-color: var(--background-color);
 }
+
 .bg-red {
   background-color: var(--site-red);
 }
+
 .video-layout {
   display: flex;
   width: 98.5vw;
@@ -21,7 +23,7 @@
   box-sizing: border-box;
 }
 
-.video-main .video {
+ .video .video-main {
   margin: 24px 0;
   max-width: 100%;
 }
@@ -30,15 +32,18 @@
   padding: 0;
   margin: 0;
 }
+
 .video-youtube-wrapper{
   margin: 0;
 }
+
 @media (width >= 900px) {
     main > .section > div.video-youtube-wrapper {
        padding: 0;
        margin: 0;
     }
 }
+
 .video {
   text-align: center;
   max-width: 900px;
