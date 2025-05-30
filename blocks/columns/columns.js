@@ -1,9 +1,9 @@
 export default function decorate(block) {
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
-  debugger
+
   // setup image columns
-  [...block.children].forEach((row, count) => {
+  [...block.children].forEach((row) => {
     row.style.cssText = `grid-template-columns: repeat(${row.childElementCount}, 1fr);`;
     [...row.children].forEach((col) => {
       const pic = col.querySelector('picture');
