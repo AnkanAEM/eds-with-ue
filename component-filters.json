@@ -28,7 +28,7 @@
     ]
   },
   {
-    "id": "columns-grid",
+    "id": "columns",
     "components": [
       "column"
     ]
