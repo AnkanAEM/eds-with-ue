@@ -62,12 +62,5 @@
             ]
         }
     ],
-    "filters": [
-        {
-            "id": "section",
-            "components": [
-                "video-youtube"
-            ]
-        }
-    ]
+    "filters": []
 }
