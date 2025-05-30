@@ -15,14 +15,28 @@
       "hero",
       "cards",
       "columns",
-      "fragment",
-      "solr-search",
-      "video-youtube"    ]
+      "fragment"
+    ]
   },
   {
     "id": "cards",
     "components": [
       "card"
+    ]
+  },
+  {
+    "id": "columns-grid",
+    "components": [
+      "column"
+    ]
+  },
+  {
+    "id": "column",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title"
     ]
   },
   {
@@ -38,6 +52,18 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "section",
+    "components": [
+      "solr-search"
+    ]
+  },
+  {
+    "id": "section",
+    "components": [
+      "video-youtube"
     ]
   }
 ]
