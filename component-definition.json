@@ -113,8 +113,8 @@
           }
         },
         {
-          "title": "Grid Columns",
-          "id": "columns-grid",
+          "title": "Columns",
+          "id": "columns",
           "plugins": {
             "xwalk": {
               "page": {
