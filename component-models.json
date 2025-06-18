@@ -273,12 +273,6 @@
         "multi": false
       },
       {
-        "component": "text",
-        "name": "imageAlt",
-        "label": "Image Alt Text",
-        "valueType": "string"
-      },
-      {
         "component": "richtext",
         "name": "text",
         "label": "Teaser Text",

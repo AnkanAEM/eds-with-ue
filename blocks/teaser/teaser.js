@@ -3,8 +3,6 @@ export default function decorate(block) {
 
   // Get image
   const picture = imgDiv.querySelector('picture');
-  const imageAlt = imgDiv.querySelector('img')?.alt || '';
-
   // Get text
   const text = textDiv ? textDiv.innerHTML : '';
 
@@ -19,7 +17,6 @@ export default function decorate(block) {
     const bg = document.createElement('div');
     bg.className = 'teaser-bg';
     bg.appendChild(picture);
-    bg.setAttribute('aria-label', imageAlt);
     teaser.appendChild(bg);
   }
 
