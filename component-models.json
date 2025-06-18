@@ -280,7 +280,7 @@
       },
       {
         "component": "text",
-        "name": "ctaUrl",
+        "name": "cta",
         "label": "CTA URL",
         "valueType": "string"
       },
