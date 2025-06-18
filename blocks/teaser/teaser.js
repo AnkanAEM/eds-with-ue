@@ -19,6 +19,7 @@ export default function decorate(block) {
     const bg = document.createElement('div');
     bg.className = 'teaser-bg';
     bg.appendChild(picture);
+    bg.setAttribute('aria-label', imageAlt);
     teaser.appendChild(bg);
   }
 

@@ -20,7 +20,7 @@
 .teaser-content {
   position: relative;
   z-index: 1;
-  background: rgba(0,0,0,0.4);
+  background: rgb(0 0 0 / 40%);
   color: #fff;
   padding: 2rem;
   border-radius: 8px;
