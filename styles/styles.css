@@ -18,7 +18,6 @@
   --text-color: #131313;
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
-  --site-red: #c20b28 ;
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
@@ -156,13 +155,13 @@ button {
 
 /* links */
 a:any-link {
-  color: var(--link-color);
+  /* color: var(--link-color); */
   text-decoration: none;
   overflow-wrap: break-word;
 }
 
 a:hover {
-  color: var(--link-hover-color);
+  /* color: var(--link-hover-color); */
   text-decoration: underline;
 }
 
