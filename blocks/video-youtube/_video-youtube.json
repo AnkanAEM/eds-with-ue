@@ -19,6 +19,8 @@
     "models": [
         {
             "id": "video-youtube",
+            "name": "Video YouTube Model",
+            "label": "Video YouTube Model",
             "fields": [
                 {
                     "component": "reference",
