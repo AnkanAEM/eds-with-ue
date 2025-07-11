@@ -27,6 +27,13 @@
         "name": "customMetadata",
         "multi": true,
         "label": "Custom Metadata"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "nav",
+        "multi": true,
+        "label": "Metadata for defning heading navigation fragment path"
       }
     ]
   },
@@ -273,6 +280,12 @@
         "multi": false
       },
       {
+        "component": "text",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "valueType": "string"
+      },
+      {
         "component": "richtext",
         "name": "text",
         "label": "Teaser Text",
@@ -280,7 +293,7 @@
       },
       {
         "component": "text",
-        "name": "cta",
+        "name": "ctaUrl",
         "label": "CTA URL",
         "valueType": "string"
       },
