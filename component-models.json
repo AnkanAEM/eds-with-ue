@@ -299,7 +299,7 @@
       },
       {
         "component": "text",
-        "name": "ctaText",
+        "name": "ctaUrlText",
         "label": "CTA Text",
         "valueType": "string"
       }
