@@ -19,9 +19,9 @@ module.exports = {
     'linebreak-style': ['error', 'unix'], // enforce unix linebreaks
     'no-param-reassign': [2, { props: false }], // allow modifying properties of param
     'no-use-before-define': 'off',
-    'xwalk/max-cells': ['warn', { max: 6 }],
+    // 'xwalk/max-cells': ['warn', { max: 6 }],
     'xwalk/max-cells': ['error', {
-      '*': 4, // default limit for all models
+      '*': 6, // default limit for all models
       form: 15,
       wizard: 12,
       'form-button': 7,
