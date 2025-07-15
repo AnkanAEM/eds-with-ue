@@ -28,6 +28,13 @@
           "name": "customMetadata",
           "multi": true,
           "label": "Custom Metadata"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "nav",
+          "multi": true,
+          "label": "Metadata for defning heading navigation fragment path"
         }
       ]
     }

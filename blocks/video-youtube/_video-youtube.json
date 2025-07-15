@@ -19,6 +19,8 @@
     "models": [
         {
             "id": "video-youtube",
+            "name": "Video YouTube Model",
+            "label": "Video YouTube Model",
             "fields": [
                 {
                     "component": "reference",
@@ -31,14 +33,14 @@
                 {
                     "component": "text",
                     "name": "ytLink",
-                    "label": "Youtue Link",
+                    "label": "YouTube Link",
                     "valueType": "string"
                 },
                 {
                     "component": "multiselect",
                     "name": "classes",
                     "value": "",
-                    "label": "Style / feature options",
+                    "label": "Style / Feature Options",
                     "valueType": "string",
                     "options": [
                         {
@@ -50,11 +52,11 @@
                             "value": "autoplay"
                         },
                         {
-                            "name": "Red",
+                            "name": "Red Background",
                             "value": "bg-red"
                         },
                         {
-                            "name": "White",
+                            "name": "White Background",
                             "value": "bg-white"
                         }
                     ]
