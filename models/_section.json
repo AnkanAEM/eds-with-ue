@@ -53,7 +53,9 @@
         "fragment",
         "solr-search",
         "video-youtube",
-        "columns-grid"
+        "columns-grid",
+        "form",
+        "embed-adaptive-form"
       ]
     }
   ]
