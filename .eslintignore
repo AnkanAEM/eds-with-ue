@@ -5,6 +5,3 @@ blocks/form/rules/model/*
 blocks/form/rules/functions.js
 scripts/editor-support.js
 scripts/editor-support-rte.js
-blocks/form/form.css
-blocks/form/**/*.css
-styles/*.css
