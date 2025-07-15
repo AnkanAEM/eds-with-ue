@@ -1,12 +1,10 @@
-
 .teaser-block {
   position: relative;
+  min-height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  width: 100%;
-  /* Height is set dynamically by JS to match image */
 }
 
 .teaser-bg picture,
@@ -15,40 +13,27 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   z-index: 0;
 }
 
 .teaser-content {
+  position: relative;
   z-index: 1;
+  background: rgb(0 0 0 / 40%);
   color: #fff;
   padding: 2rem;
   border-radius: 8px;
   text-align: center;
-  width: 100%;
 }
 
-.teaser-text {
-  margin-bottom: 1rem;
-}
-
-.teaser-cta-btn {
-    position: absolute;
-    left: 105px;
-    bottom: 21%;
-    border-radius:1.75rem;
+.teaser-cta {
   display: inline-block;
   margin-top: 1rem;
   padding: 0.75em 2em;
-  background: var(--cta-bg-red);
-  color: var( --text-color-primary);
+  background: #0070f3;
+  color: #fff;
+  border-radius: 4px;
   text-decoration: none;
   font-weight: bold;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.teaser-cta-btn:hover,
-.teaser-cta-btn:focus {
-  background: var(--cta-hover-bg-red);
 }
